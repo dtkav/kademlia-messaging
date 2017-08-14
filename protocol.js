@@ -8,8 +8,7 @@ messages = require("./messages")
 // }
 function sendPing(client, addr, port, msg_id) {
   msg = messages.ping(msg_id)
-  client.send(msg, port, addr, (err) => {
-  });
+  client.send(msg, port, addr);
   return msg_id
 }
 
@@ -19,8 +18,7 @@ function sendPing(client, addr, port, msg_id) {
 // }
 function sendAck(client, addr, port, msg_id) {
   msg = messages.ack(msg_id)
-  client.send(msg, port, addr, (err) => {
-  });
+  client.send(msg, port, addr);
   return msg_id
 }
 
@@ -32,20 +30,18 @@ function sendAck(client, addr, port, msg_id) {
 // }
 function sendStore(client, addr, port, msg_id, key, value) {
     msg = messages.store(msg_id, key, value)
-    client.send(msg, port, addr, (err) => {});
+    client.send(msg, port, addr);
     return msg_id 
 }
 
 // FIND_NODE_REQUEST
 // {
 //  "magic_cookie",
-//  "target_address",
-//  "key"
+//  "key"  // same as node_id
 // }
 function sendFindNode(client, addr, port, msg_id, key) {
   msg = messages.findNode(msg_id, key)
-  client.send(msg, port, addr, (err) => {
-  });
+  client.send(msg, port, addr);
   return msg_id
 }
 
@@ -53,19 +49,17 @@ function sendFindNode(client, addr, port, msg_id, key) {
 // {
 //  "magic_cookie",
 //  "key",
-//  "nodes": [(KEY, IP_ADRESS)]
+//  "nodes": [(KEY, IP_ADDRESS, PORT)]
 // }
 function sendFoundNode(client, addr, port, msg_id, key, nodes) {
   msg = messages.foundNodes(msg_id, key, nodes)
-  client.send(msg, port, addr, (err) => {
-  });
+  client.send(msg, port, addr);
   return msg_id
 }
 
 // FIND_VAL_REQUEST
 // {
 //  "magic_cookie",
-//  "target_address",
 //  "key"
 // }
 function sendFindValue(client, addr, port, msg_id, key) {
@@ -80,7 +74,7 @@ function sendFindValue(client, addr, port, msg_id, key) {
 //  "magic_cookie",
 //  "key",
 //  "value",
-//  "nodes": [(KEY, IP_ADRESS)]
+//  "nodes": [(KEY, IP_ADDRESS, PORT)]
 // }
 function sendFoundValue(client, addr, port, msg_id, key, value, nodes) {
   msg = messages.foundValue(msg_id, key, value, nodes)
