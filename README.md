@@ -1,6 +1,9 @@
-# udp-serializer
+# kademlia messaging
 
-Messaging component for a group kademlia project.
+This is part of a group project to implement kademlia.
+This repo includes only some basic messaging and serialization.
+A subset of the redis RESP protocol was used for serialization.
+Messaging is done over UDP.
 
 Serialize / Deserialize javascript objects to appropriate UDP packets
 - UDP glue code
