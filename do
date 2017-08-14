@@ -15,7 +15,7 @@ function ping() {
 }
 
 function client() {
-    docker exec kademlia-node-$1 node client.js
+    docker exec kademlia-node-$1 node test/client.js
 }
 
 function shell() {

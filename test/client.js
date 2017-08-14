@@ -1,7 +1,7 @@
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
-const proto = require('./protocol');
-const magicCookie = require("./magic_cookies");
+const proto = require('../protocol');
+const magicCookie = require("../magic_cookies");
 
 sent = []
 

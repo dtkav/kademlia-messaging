@@ -16,22 +16,23 @@ to build the docker container
 ./do build  # builds the docker container
 ```
 
-to run the server, run
+to run the server:
 ```
 ./do run
 ```
 
-to run a dummy client to exercise some of the messaging, run
+you can run /test/client.js to exercize some basic messaging.
+to run a dummy client:
 ```
 ./do client
 ```
 
-you can connect to a container with
+you can connect to a container with:
 ```
 ./do shell
 ```
 
-you can specify the port as an environment variable
+you can specify the upd port as an environment variable:
 ```
 PORT=41235 ./do
 ```
