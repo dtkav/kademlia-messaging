@@ -1,25 +1,25 @@
 // the kademlia protocol
 
-messages = require("./messages")
+const messages = require('./messages')
 
 // PING_REQUEST
 // {
 //  "magic_cookie"
 // }
-function sendPing(client, addr, port, msg_id) {
-  msg = messages.ping(msg_id)
-  client.send(msg, port, addr);
-  return msg_id
+function sendPing (client, addr, port, msgId) {
+  var msg = messages.ping(msgId)
+  client.send(msg, port, addr)
+  return msgId
 }
 
 // ACK
 // {
 //  "magic_cookie"
 // }
-function sendAck(client, addr, port, msg_id) {
-  msg = messages.ack(msg_id)
-  client.send(msg, port, addr);
-  return msg_id
+function sendAck (client, addr, port, msgId) {
+  var msg = messages.ack(msgId)
+  client.send(msg, port, addr)
+  return msgId
 }
 
 // STORE_REQUEST
@@ -28,10 +28,10 @@ function sendAck(client, addr, port, msg_id) {
 //  "key",
 //  "val"
 // }
-function sendStore(client, addr, port, msg_id, key, value) {
-    msg = messages.store(msg_id, key, value)
+function sendStore(client, addr, port, msgId, key, value) {
+    msg = messages.store(msgId, key, value)
     client.send(msg, port, addr);
-    return msg_id 
+    return msgId 
 }
 
 // FIND_NODE_REQUEST
@@ -39,10 +39,10 @@ function sendStore(client, addr, port, msg_id, key, value) {
 //  "magic_cookie",
 //  "key"  // same as node_id
 // }
-function sendFindNode(client, addr, port, msg_id, key) {
-  msg = messages.findNode(msg_id, key)
-  client.send(msg, port, addr);
-  return msg_id
+function sendFindNode (client, addr, port, msgId, key) {
+  var msg = messages.findNode(msgId, key)
+  client.send(msg, port, addr)
+  return msgId
 }
 
 // FIND_NODE_RESPONSE
@@ -51,10 +51,10 @@ function sendFindNode(client, addr, port, msg_id, key) {
 //  "key",
 //  "nodes": [(KEY, IP_ADDRESS, PORT)]
 // }
-function sendFoundNode(client, addr, port, msg_id, key, nodes) {
-  msg = messages.foundNodes(msg_id, key, nodes)
-  client.send(msg, port, addr);
-  return msg_id
+function sendFoundNode (client, addr, port, msgId, key, nodes) {
+  var msg = messages.foundNodes(msgId, key, nodes)
+  client.send(msg, port, addr)
+  return msgId
 }
 
 // FIND_VAL_REQUEST
@@ -62,11 +62,10 @@ function sendFoundNode(client, addr, port, msg_id, key, nodes) {
 //  "magic_cookie",
 //  "key"
 // }
-function sendFindValue(client, addr, port, msg_id, key) {
-  msg = messages.findValue(msg_id, key)
-  client.send(msg, port, addr, (err) => {
-  });
-  return msg_id
+function sendFindValue (client, addr, port, msgId, key) {
+  var msg = messages.findValue(msgId, key)
+  client.send(msg, port, addr)
+  return msgId
 }
 
 // FIND_VALUE_RESPONSE
@@ -76,11 +75,10 @@ function sendFindValue(client, addr, port, msg_id, key) {
 //  "value",
 //  "nodes": [(KEY, IP_ADDRESS, PORT)]
 // }
-function sendFoundValue(client, addr, port, msg_id, key, value, nodes) {
-  msg = messages.foundValue(msg_id, key, value, nodes)
-  client.send(msg, port, addr, (err) => {
-  });
-  return msg_id
+function sendFoundValue (client, addr, port, msgId, key, value, nodes) {
+  var msg = messages.foundValue(msgId, key, value, nodes)
+  client.send(msg, port, addr)
+  return msgId
 }
 
 exports.sendAck = sendAck
